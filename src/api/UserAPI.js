@@ -1,28 +1,23 @@
 import { API_URL } from './APIConfig';
 
-export const createAccount = data => {
+export const createAccount = async data => {
   const config = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ data })
+    body: JSON.stringify({ ...data })
   }
 
-  return fetch(API_URL + '/users', config)
-  .then(async res => {
-    const data = await res.json()
-    if (res.ok) {
-      return data
+  try {
+    const response = await fetch(API_URL + '/users', config)
+    const resData = await response.json()
+    if (response.ok) {
+      return resData
     } else {
-      throw new Error(data.message)
+      return Promise.reject(resData.message)
     }
-  })
-  .then(data => {
-    console.log(data)
-  })
-  .catch(e => {
-    console.log('error')
-    console.log(e)
-  })
+  } catch (e) {
+    return Promise.reject(`Something went wrong :( Please try again`)
+  }
 }

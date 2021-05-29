@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
 import ModalAuth from './ModalAuth';
-import { createAccount } from '../api/UserAPI';
 
 const Homepage = props => {
   
   const [showModalAuth, setShowModalAuth] = useState(true)
-
-  const handleCreateAccount = data => {
-    createAccount(data)
-  }
 
   const handleLogIn = data => console.log(data)
 
@@ -16,8 +11,7 @@ const Homepage = props => {
     <>
       { showModalAuth && (
         <ModalAuth
-          handleCreateAccount={ handleCreateAccount }
-          handleLogIn={ handleLogIn }
+          closeModalAuth={ () => setShowModalAuth(false) }
         />
       )}
     </>
