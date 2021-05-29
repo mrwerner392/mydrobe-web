@@ -16,7 +16,7 @@ const ModalAuth = ({ handleCreateAccount, handleLogIn }) => {
       handlePrimaryBtnClick: () => handleCreateAccount({
         username,
         password,
-        passwordConfirmation
+        password_confirmation: passwordConfirmation
       }),
       handleSecondaryBtnClick: () => setFormType('login')
     },
