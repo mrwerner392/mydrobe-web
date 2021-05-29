@@ -1,9 +1,12 @@
 import React from 'react';
+import ModalAuth from './ModalAuth';
 
 const Homepage = props => {
+  
   return (
-    <div>This is the homepage :)</div>
+    <ModalAuth />
   )
+  
 }
 
 export default Homepage;
