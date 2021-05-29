@@ -1,5 +1,6 @@
 import React, { useState} from 'react';
-import Modal from './Modal'
+import Modal from './Modal';
+import { InputGroup, FormControl } from 'react-bootstrap';
 
 const ModalAuth = props => {
   
@@ -30,7 +31,17 @@ const ModalAuth = props => {
       handlePrimaryBtnClick={ formData.handlePrimaryBtnClick }
       handleSecondaryBtnClick={ formData.handleSecondaryBtnClick }
     >
-      <p>Modal Body</p>
+      <InputGroup className='mb-3'>
+        <FormControl placeholder='username'></FormControl>
+      </InputGroup>
+      <InputGroup className='mb-3'>
+        <FormControl type='password' placeholder='password'></FormControl>
+      </InputGroup>
+      { formType === 'create' && (
+        <InputGroup className='mb-3'>
+          <FormControl type='password' placeholder='confirm password'></FormControl>
+        </InputGroup>
+      )}
     </Modal>
   )
 
