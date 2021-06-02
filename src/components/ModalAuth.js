@@ -111,7 +111,7 @@ const ModalAuth = ({ closeModalAuth }) => {
         </FormControl.Feedback>
       </InputGroup>
       { formType === 'create' && (
-        <InputGroup className='mb-3' hasVaidation>
+        <InputGroup className='mb-3' hasValidation>
           <FormControl
             type='password'
             placeholder='confirm password'
