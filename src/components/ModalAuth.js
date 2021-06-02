@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { InputGroup, FormControl } from 'react-bootstrap';
 import Modal from './Modal';
-import { createAccount } from '../api/UserAPI';
+import userAPI from '../api/userAPI';
 
 const USERNAME_ERRORS = {
   length: 'Username must be at least 5 characters.',
@@ -38,7 +38,7 @@ const ModalAuth = ({ closeModalAuth }) => {
     } else if (passwordConfirmation !== password) {
       setPasswordConfirmationError('Passwords do not match')
     } else {
-      createAccount({
+      userAPI.createAccount({
         username,
         password
       })
@@ -111,7 +111,7 @@ const ModalAuth = ({ closeModalAuth }) => {
         </FormControl.Feedback>
       </InputGroup>
       { formType === 'create' && (
-        <InputGroup className='mb-3' hasVaidation>
+        <InputGroup className='mb-3' hasValidation>
           <FormControl
             type='password'
             placeholder='confirm password'
