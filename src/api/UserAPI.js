@@ -32,7 +32,7 @@ const userAPI = {
     }
   
     try {
-      const response = await fetch(API_URL + '/users', config)
+      const response = await fetch(API_URL + '/login', config)
       const resData = await response.json()
       if (response.ok) {
         return resData
