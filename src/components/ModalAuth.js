@@ -51,8 +51,13 @@ const ModalAuth = ({ closeModalAuth }) => {
   const handleLogInSubmit = () => {
     if (validateForm()) {
       userAPI.logIn({ username, password })
-      .then(console.log)
-      .catch(console.log)
+      .then(res => {
+        console.log('success', res)
+      })
+      .catch(e => {
+        console.log('error', e)
+        setAlert(e)
+      })
     }
   }
 

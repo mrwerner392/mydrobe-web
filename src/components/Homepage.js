@@ -5,10 +5,8 @@ import Content from './Content';
 
 const Homepage = props => {
   
-  const [showModalAuth, setShowModalAuth] = useState(false)
+  const [showModalAuth, setShowModalAuth] = useState(true)
   const [contentType, setContentType] = useState('wardrobe')
-
-  const handleLogIn = data => console.log(data)
 
   return (
     <>
