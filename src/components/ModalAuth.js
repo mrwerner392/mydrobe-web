@@ -31,17 +31,8 @@ const ModalAuth = ({ closeModalAuth }) => {
   }, [password, passwordConfirmation])
 
   const handleCreateAccount = async () => {
-    if (username.length < 5) {
-      setUsernameErrorType('length')
-    } else if (password.length < 8) {
-      setPasswordError('Password must be at least 8 characters.')
-    } else if (passwordConfirmation !== password) {
-      setPasswordConfirmationError('Passwords do not match')
-    } else {
-      userAPI.createAccount({
-        username,
-        password
-      })
+    if (validateForm()) {
+      userAPI.createAccount({ username, password })
       .then(res => {
         console.log('success', res)
         // closeModalAuth()
@@ -58,7 +49,31 @@ const ModalAuth = ({ closeModalAuth }) => {
   }
 
   const handleLogInSubmit = () => {
-    console.log('login')
+    if (validateForm()) {
+      userAPI.logIn({ username, password })
+      .then(res => {
+        console.log('success', res)
+      })
+      .catch(e => {
+        console.log('error', e)
+        setAlert(e)
+      })
+    }
+  }
+
+  const validateForm = () => {
+    let valid = true
+    if (username.length < 5) {
+      setUsernameErrorType('length')
+      valid = false
+    } else if (password.length < 8) {
+      setPasswordError('Password must be at least 8 characters.')
+      valid = false
+    } else if (formType === 'create' && passwordConfirmation !== password) {
+      setPasswordConfirmationError('Passwords do not match')
+      valid = false
+    }
+    return valid
   }
 
   const formData = formType === 'create'

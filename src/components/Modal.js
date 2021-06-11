@@ -30,7 +30,7 @@ const Modal = props => {
         { children }
       </RBModal.Body>
       <RBModal.Footer>
-        { !!alert && <p class='text-danger pr-5'>{ alert }</p> }
+        { !!alert && <p className='text-danger pr-5'>{ alert }</p> }
         <Button variant="secondary" onClick={ handleSecondaryBtnClick }>{ secondaryBtnText }</Button>
         <Button variant="primary" onClick={ handlePrimaryBtnClick }>{ primaryBtnText }</Button>
       </RBModal.Footer>
